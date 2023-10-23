@@ -1,0 +1,4 @@
+/static/*
+/**/.env.*
+/nginx/calorium.ru.crt
+/nginx/calorium.ru.key

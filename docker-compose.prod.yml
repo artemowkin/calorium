@@ -1,0 +1,41 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    env_file:
+      - ./backend/.env.prod
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  redis_db:
+    image: redis
+  backend:
+    build:
+      context: .
+      dockerfile: ./backend/docker/Dockerfile.prod
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+    env_file:
+      - ./backend/.env.prod
+    depends_on:
+      - db
+      - redis_db
+  front:
+    build:
+      context: .
+      dockerfile: ./frontend/docker/Dockerfile.prod
+  web:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile.prod
+    volumes:
+      - ./static/:/home/project/static/
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+      - front
+
+volumes:
+  pg_data:

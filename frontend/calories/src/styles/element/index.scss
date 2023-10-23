@@ -1,0 +1,48 @@
+@forward 'element-plus/theme-chalk/src/common/var.scss' with (
+  $colors: (
+    'white': #191e25,
+    'primary': (
+      'base': #1f56bb,
+    ),
+    'success': (
+      'base': #67c23a,
+    ),
+    'warning': (
+      'base': #e6a23c,
+    ),
+    'danger': (
+      'base': #f56c6c,
+    ),
+    'error': (
+      'base': #f56c6c,
+    ),
+    'info': (
+      'base': #383d46,
+    ),
+  ),
+  $bg-color: (
+    '': #191e25,
+    'page': #010918,
+    'overlay': #191e25,
+  ),
+  $input: (
+    'bg-color': #191e25,
+    'border': 2px,
+    'border-color': #383d46,
+    'hover-border-color': #383d46,
+  ),
+  $border-color: (
+    '': #383d46,
+    'light': #383d46,
+    'lighter': #727a88,
+  ),
+  $fill-color: (
+    'light': #2d3138,
+    'blank': #383d46,
+  ),
+  $date-editor: (
+    'width': 100%,
+  ),
+);
+
+@use "element-plus/theme-chalk/src/index.scss" as *;

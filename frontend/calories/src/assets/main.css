@@ -1,0 +1,39 @@
+:root {
+  --black: #010918;
+  --black100: #191e25;
+  --black200: #39414d;
+  --white: #e1e6ee;
+  --gray: #383d46;
+  --gray100: #727a88;
+  --blue-transparent: #2555af54;
+  --blue: #1f56bb;
+  --blue100: #09275f;
+  --popup-background: rgba(0, 0, 0, .25);
+  --red: #942a2a;
+  --red-transparent: #942a2a48;
+  --black100-transparent: #191e2575;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--black);
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: 'Sofia Sans', sans-serif;
+  color: var(--white);
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}

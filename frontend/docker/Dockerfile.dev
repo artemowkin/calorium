@@ -1,0 +1,6 @@
+FROM node:20.8.1
+
+WORKDIR /src/
+COPY frontend/calories/ /src/
+
+RUN npm install

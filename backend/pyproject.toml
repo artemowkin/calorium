@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["artemowkin <artyom.groshev2017@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.103.2"
+sqlalchemy = "^2.0.22"
+pydantic = "^2.4.2"
+pydantic-settings = "^2.0.3"
+uvicorn = "^0.23.2"
+asyncpg = "^0.28.0"
+aiohttp = "^3.8.6"
+redis = "^5.0.1"
+email-validator = "^2.0.0.post2"
+python-jose = "^3.3.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
