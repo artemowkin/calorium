@@ -14,6 +14,8 @@ import type { EatingData } from '@/api/eatings'
 
 const currentPopUp = ref<'addProduct' | 'loginPrompt' | null>(null)
 
+const deferredPrompt = ref<Event | null>(null)
+
 const onPopUpClose = () => {
   document.body.style.overflow = 'auto'
   currentPopUp.value = null
@@ -115,6 +117,15 @@ const resetCalculator = () => {
   createForm.timestamp = new Date()
 }
 
+const onInstallClose = () => {
+  deferredPrompt.value = null
+}
+
+const installClick = () => {
+  deferredPrompt.value!.prompt()
+  deferredPrompt.value = null
+}
+
 onMounted(async () => {
   const token = localStorage.getItem('accessToken')
 
@@ -122,6 +133,10 @@ onMounted(async () => {
 
   const user = await getMe(token)
   usersStore.setCurrentUser(user)
+})
+
+window.addEventListener('beforeinstallprompt', e => {
+  deferredPrompt.value = e
 })
 </script>
 
@@ -150,6 +165,17 @@ onMounted(async () => {
         </div>
         <p>Откройте больше функционала, рассказав нам немного о себе :)</p>
         <RouterLink to="/login">Войти</RouterLink>
+      </div>
+    </template>
+  </PopUp>
+  <PopUp v-show="deferredPrompt" @close="onInstallClose">
+    <template #popup_body>
+      <div class="install_form">
+        <h2>Установите приложение</h2>
+        <div class="buttons_container">
+          <el-button type="primary" @click="installClick">Установить</el-button>
+          <el-button @click="onInstallClose">Отмена</el-button>
+        </div>
       </div>
     </template>
   </PopUp>
@@ -183,6 +209,22 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+.install_form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.install_form .buttons_container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.install_form .buttons_container .install {
+  background-color: var(--blue);
+  color: var(--white);
+}
+
 .el-button {
   width: 100%;
 }
