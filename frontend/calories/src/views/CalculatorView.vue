@@ -14,7 +14,7 @@ import type { EatingData } from '@/api/eatings'
 
 const currentPopUp = ref<'addProduct' | 'loginPrompt' | null>(null)
 
-const deferredPrompt = ref<Event | null>(null)
+const deferredPrompt = ref<any | null>(null)
 
 const onPopUpClose = () => {
   document.body.style.overflow = 'auto'
