@@ -4,7 +4,7 @@ import type { FormRules, FormInstance, UploadProps } from 'element-plus';
 import { Plus } from '@element-plus/icons-vue';
 
 export interface Props {
-  modelValue: object
+  modelValue: { image?: any | null, title: string, kkal: number }
   title: string
   error: string
 }

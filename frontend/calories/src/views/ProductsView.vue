@@ -23,6 +23,14 @@ const currentPage = ref<'my' | 'generic'>('generic')
 
 const currentPopUp = ref<'add-product' | null>(null)
 
+const fullLoaded = computed(() => {
+  if (currentPage.value == 'my') {
+    return eatingsStore.myPaginatedProducts.page >= eatingsStore.myPaginatedProducts.pages_count
+  } else {
+    return eatingsStore.paginatedProducts.page >= eatingsStore.paginatedProducts.pages_count
+  }
+})
+
 const currentPageProducts = computed<PaginatedResponse<ProductResponse>>(() => {
   if (currentPage.value == 'my') {
     return eatingsStore.myPaginatedProducts
@@ -31,19 +39,10 @@ const currentPageProducts = computed<PaginatedResponse<ProductResponse>>(() => {
   return eatingsStore.paginatedProducts
 })
 
-const productData = reactive<CreateProductData>({
+const productData = reactive<{ title: string, kkal: number, image?: any | null }>({
   title: "",
   kkal: 1,
   image: null,
-})
-
-const fullLoaded = computed(() => {
-  if (currentPage.value == 'my') {
-    return eatingsStore.myPaginatedProducts.page >= eatingsStore.myPaginatedProducts.pages_count
-  } else {
-    console.log(eatingsStore.paginatedProducts.page, eatingsStore.paginatedProducts.pages_count)
-    return eatingsStore.paginatedProducts.page >= eatingsStore.paginatedProducts.pages_count
-  }
 })
 
 const onSaveProduct = async () => {
@@ -134,7 +133,7 @@ const loadMoreProducts = async () => {
 <template>
   <AppPopUp v-if="currentPopUp == 'add-product'" @close="currentPopUp = null">
     <div class="add_product_popup_inner">
-      <ProductForm v-model="productData" title="Добавить продукт" @save="onSaveProduct" @cancel="currentPopUp = null" />
+      <ProductForm error="" v-model="productData" title="Добавить продукт" @save="onSaveProduct" @cancel="currentPopUp = null" />
     </div>
   </AppPopUp>
   <ProductsListNavigation :current-page="currentPage" @set-current-page="(newPage: 'my' | 'generic') => currentPage = newPage" />
