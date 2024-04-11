@@ -17,9 +17,14 @@ class ProductsManager:
         return [Product.model_validate(product) for product in products]
 
     async def get_all(
-        self, page: int = 1, per_page: int = 50, ids: list[int] | None = None, owner: DbUser | None = None
+        self,
+        page: int = 1,
+        per_page: int = 50,
+        ids: list[int] | None = None,
+        owner: DbUser | None = None,
+        only_owner: bool = False,
     ) -> PaginatedResponse[Product]:
-        all_products = await self._products_set.all(page, per_page, ids, owner)
+        all_products = await self._products_set.all(page, per_page, ids, owner, only_owner)
         return all_products
 
     async def get_concrete_or_none(self, id: int) -> Product | None:

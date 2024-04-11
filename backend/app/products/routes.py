@@ -35,7 +35,7 @@ async def all_products(
     except ValueError:
         int_ids = None
 
-    return await products_manager.get_all(page, per_page, int_ids, user if my else None)
+    return await products_manager.get_all(page, per_page, int_ids, user, my)
 
 
 @router.post("/", response_model=Product)

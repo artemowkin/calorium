@@ -40,7 +40,7 @@ onMounted(async () => {
   })
 
   if (productsIds.length) {
-    const loadedProducts = await getProducts({ ids: productsIds })
+    const loadedProducts = await getProducts({ ids: productsIds, token })
     eatingsStore.addProducts(loadedProducts.data)
   }
 })
