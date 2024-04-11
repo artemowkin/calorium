@@ -21,6 +21,8 @@ services:
     depends_on:
       - db
       - redis_db
+    volumes:
+      - ./static/:/static/
   front:
     build:
       context: .
