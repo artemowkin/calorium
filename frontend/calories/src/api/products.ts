@@ -22,13 +22,13 @@ export const searchProducts = async (query: string = '', limit: number = 20): Pr
 }
 
 export const getProducts = async ({ page = 1, perPage = 50, ids = null, my = false, token = null }: { page?: number, perPage?: number, ids?: number[] | null, my?: boolean, token?: string | null }): Promise<PaginatedResponse<ProductResponse>> => {
-  const params = {
+  const params: { page: string, per_page: string, my: string, ids?: string } = {
     page: String(page),
     per_page: String(perPage),
     my: String(my)
   }
 
-  if (ids) params.ids = ids
+  if (ids) params.ids = ids.join(',')
 
   console.log(params)
   const headers: { Authorization: string } | {} = token ? { "Authorization": `Bearer ${token}` } : {}
