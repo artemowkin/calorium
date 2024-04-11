@@ -20,7 +20,7 @@ const emits = defineEmits<Emits>()
 
 const productsContainer = ref()
 
-const loadMore = async ($state) => {
+const loadMore = async ($state: any) => {
   console.log("Load more. Full = ", props.full)
   await emits('load')
 
