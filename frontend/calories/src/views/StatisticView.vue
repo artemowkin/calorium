@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import { useUsersStore } from '@/stores/users';
 import { getMe } from '@/api/users';
 import { useRouter } from 'vue-router';
 import { getAllEatings } from '@/api/eatings'
-import type { EatingResponse } from '@/api/eatings';
 import Navigation from '@/components/Navigation.vue';
 import EatingsList from '@/components/EatingsList.vue';
-import type { ProductResponse } from '@/api/products';
 import { getProducts } from '@/api/products'
 import { useEatingsStore } from '@/stores/eatings'
 
@@ -42,8 +40,8 @@ onMounted(async () => {
   })
 
   if (productsIds.length) {
-    const loadedProducts = await getProducts(productsIds)
-    eatingsStore.addProducts(loadedProducts)
+    const loadedProducts = await getProducts({ ids: productsIds })
+    eatingsStore.addProducts(loadedProducts.data)
   }
 })
 </script>

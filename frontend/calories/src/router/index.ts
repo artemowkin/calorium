@@ -4,6 +4,7 @@ import AuthenticationView from '@/views/AuthenticationView.vue'
 import StatisticView from '@/views/StatisticView.vue'
 import UserView from '@/views/UserView.vue'
 import { refresh } from '@/api/users'
+import ProductsView from '@/views/ProductsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,6 +29,11 @@ const router = createRouter({
       name: 'user',
       component: UserView,
     },
+    {
+      path: '/products',
+      name: 'products',
+      component: ProductsView,
+    }
   ]
 })
 

@@ -6,7 +6,7 @@ authors = ["artemowkin <artyom.groshev2017@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 beautifulsoup4 = "^4.12.2"
 aiohttp = "^3.8.6"
 aiosqlite = "^0.19.0"

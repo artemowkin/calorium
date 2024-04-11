@@ -6,7 +6,7 @@ authors = ["artemowkin <artyom.groshev2017@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 fastapi = "^0.103.2"
 sqlalchemy = "^2.0.22"
 pydantic = "^2.4.2"
@@ -17,6 +17,7 @@ aiohttp = "^3.8.6"
 redis = "^5.0.1"
 email-validator = "^2.0.0.post2"
 python-jose = "^3.3.0"
+python-multipart = "^0.0.9"
 
 
 [build-system]

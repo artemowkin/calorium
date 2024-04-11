@@ -20,6 +20,7 @@ services:
       - ./backend/.env.dev
     volumes:
       - ./backend/:/src/
+      - ./static/:/static/
     ports:
       - 8000:8000
     depends_on:
