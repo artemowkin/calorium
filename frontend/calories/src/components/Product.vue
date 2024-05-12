@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import type { EatingProductResponse } from '@/api/eatings'
 import type { ProductResponse } from '../api/products'
 
 export interface Props {
   product: ProductResponse
   editable?: boolean
   deleteable?: boolean
+  eatingProduct?: EatingProductResponse
 }
 
 export interface Emits {
@@ -30,7 +32,7 @@ const onWeightInput  = (e: any) => {
     <div class="product__body">
       <div class="product__title">{{ props.product.title }}</div>
       <div class="product__weight">
-        <input :disabled="!props.editable" class="product__weight" type="text" :value="props.product.mass" @input="onWeightInput">
+        <input :disabled="!props.editable" class="product__weight" type="text" :value="props.eatingProduct ? props.eatingProduct.mass : props.product.mass" @input="onWeightInput">
         <span>гр.</span>
       </div>
     </div>

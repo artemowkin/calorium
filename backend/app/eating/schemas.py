@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from pydantic import BaseModel, ConfigDict
 
@@ -40,3 +40,7 @@ class EatingResponse(BaseModel):
     timestamp: datetime
     products: list[EatingProductResponse]
 
+
+class DateStatistic(BaseModel):
+    date: date
+    total_kkals: int

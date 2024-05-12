@@ -75,7 +75,7 @@ const getTotalKkalsForDate = (date: Date) => {
             <div class="eating_total_kkals">{{ getTotalKkals(eating.products) }} ккал.</div>
           </div>
           <div class="products_container">
-            <Product v-for="(product, _) in eating.products" :key="product.product_id" :product="getProduct(product)" :editable="false" :deleteable="false" />
+            <Product v-for="(product, _) in eating.products" :key="product.product_id" :product="getProduct(product)" :eating-product="product" :editable="false" :deleteable="false" />
           </div>
         </div>
       </div>

@@ -20,6 +20,11 @@ export interface EatingResponse {
   products: EatingProductResponse[]
 }
 
+export interface DateStatistic {
+  date: string
+  total_kkals: number
+}
+
 export const saveEating = async (token: string, data: EatingData): Promise<EatingResponse> => {
   const response = await fetch('/api/v1/eatings/', {
     method: 'POST',
@@ -44,6 +49,14 @@ export const saveEating = async (token: string, data: EatingData): Promise<Eatin
 
 export const getAllEatings = async (token: string): Promise<EatingResponse[]> => {
   const response = await fetch('/api/v1/eatings/', {
+    headers: { Authorization: `Bearer ${token}` }
+  })
+  const responseJson = await response.json()
+  return responseJson
+}
+
+export const getEatingsStatistic = async (token: string, startMonth: string, stopMonth: string): Promise<DateStatistic[]> => {
+  const response = await fetch(`/api/v1/eatings/statstic/?start_month=${startMonth}&end_month=${stopMonth}`, {
     headers: { Authorization: `Bearer ${token}` }
   })
   const responseJson = await response.json()

@@ -1,10 +1,9 @@
-from sqlalchemy.ext.asyncio import AsyncSession
-
 from app.auth.schemas import DbUser
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from ..products.services import ProductsManager
 from .crud import EatingsQueries
-from .schemas import CreateEatingData, DbEating
+from .schemas import CreateEatingData, DateStatistic, DbEating
 
 
 class EatingsManager:
@@ -25,3 +24,6 @@ class EatingsManager:
         all_eatings = await self._eatings_queries.get_all(user)
         return all_eatings
 
+    async def get_statistics(self, user: DbUser, start_month: str, end_month: str) -> list[DateStatistic]:
+        statistics = await self._eatings_queries.get_statistics(user, start_month, end_month)
+        return statistics
