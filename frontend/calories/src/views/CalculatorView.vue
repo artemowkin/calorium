@@ -185,7 +185,7 @@ window.addEventListener('beforeinstallprompt', e => {
         <h1>Калькулятор</h1>
         <div class="selected_products" v-if="selectedProducts.length">
           <div class="products_list">
-            <Product v-for="(product, _) in selectedProducts" :product="product" @delete="onProductDelete" :editable="true" :deleteable="true" />
+            <Product v-for="(product, _) in selectedProducts" :product="product" @delete="onProductDelete" :editable="true" :deleteable="true" :showProductKkals="true" />
           </div>
         </div>
         <button class="add_button" @click="showAddProduct">

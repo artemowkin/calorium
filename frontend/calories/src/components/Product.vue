@@ -7,6 +7,7 @@ export interface Props {
   editable?: boolean
   deleteable?: boolean
   eatingProduct?: EatingProductResponse
+  showProductKkals?: boolean
 }
 
 export interface Emits {
@@ -34,6 +35,7 @@ const onWeightInput  = (e: any) => {
       <div class="product__weight">
         <input :disabled="!props.editable" class="product__weight" type="text" :value="props.eatingProduct ? props.eatingProduct.mass : props.product.mass" @input="onWeightInput">
         <span>гр.</span>
+        <span v-if="props.showProductKkals"> ({{ Math.round((props.product.mass * props.product.kkal) / 100) }} Ккал.)</span>
       </div>
     </div>
     <div v-show="props.deleteable" class="product__delete" @click="onDelete">
