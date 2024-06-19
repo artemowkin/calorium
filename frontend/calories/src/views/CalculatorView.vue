@@ -202,6 +202,7 @@ window.addEventListener('beforeinstallprompt', e => {
           </el-form>
           <el-button type="primary" @click="saveClick">Сохранить</el-button>
         </div>
+        <RouterLink v-if="!usersStore.currentUser" :to="{ name: 'login' }" class="authorization_link">Авторизоваться</RouterLink>
       </div>
     </div>
   </div>
@@ -209,6 +210,17 @@ window.addEventListener('beforeinstallprompt', e => {
 </template>
 
 <style scoped>
+.authorization_link {
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: var(--blue);
+}
+
+.authorization_link:hover {
+  text-decoration: underline;
+}
+
 .install_form {
   display: grid;
   grid-template-columns: 1fr;
